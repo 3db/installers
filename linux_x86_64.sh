@@ -1,5 +1,9 @@
 #/bin/sh
 
+env_name=${1:-threedb}
+
+echo $env_name
+
 # Determine OS platform
 UNAME=$(uname | tr "[:upper:]" "[:lower:]")
 # If Linux, try to determine specific distribution
@@ -16,8 +20,6 @@ fi
 [ "$DISTRO" == "" ] && export DISTRO=$UNAME
 unset UNAME
 
-echo $DISTRO
-
 case $DISTRO in
     Arch)
         sudo pacman -Sy  alembic boost-libs desktop-file-utils embree ffmpeg fftw freetype2 glew hicolor-icon-theme jack jemalloc libpng libsndfile libspnav libtiff log4cplus openal opencollada opencolorio1 openexr openimagedenoise openimageio openjpeg2 openshadinglanguage opensubdiv openvdb openxr potrace ptex python python-numpy python-requests sdl2 shared-mime-info xdg-utils;
@@ -28,11 +30,13 @@ case $DISTRO in
         ;;
 esac
 
-conda create -y -n threedb python=3.7.7
-source ~/.bashrc 
-conda activate threedb
+conda create -y -n $env_name python=3.7.7
+# source $CONDA_PREFIX/etc/profile.d/conda.sh
+# source ~/anaconda3/etc/profile.d/conda.sh
+CONDA_PREFIX=$(conda run -n $env_name bash -c 'echo \$CONDA_PREFIX')
 echo $CONDA_PREFIX
 
+rm -rf /tmp/3db
 git clone https://github.com/3db/3db.git /tmp/3db
 mv /tmp/3db/threedb $CONDA_PREFIX/lib/python3.7/site-packages
 
@@ -45,4 +49,4 @@ mv blender-2.92.0-linux64/ blender
 rm -rf ./blender/2.92/python
 ln -s $CONDA_PREFIX ./blender/2.92/python
 rm $CONDA_PREFIX/bin/blender 2> /dev/null
-ln -s $CONDA_PREFIX/blender/blender $CONDA_PREFIX/bin
+ln -s $CONDA_PREFIX/blender/blender $CONDA_PREFIX/bin/blender
