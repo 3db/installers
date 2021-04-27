@@ -28,12 +28,12 @@ If the scripts don't work for you or if you have an unsupported operating system
 
 Blender uses its own `python` internally. It can problematic because when you installed the packages earlier in the set of instructions, these were for the regular version of python (wheter it's `conda`, your system python or a `virtualenv`). As a result when you run the workers they won't have the necessary packages. To solve that issue there are multiople alternatives. You should pick the one that suits you better:
 
-### Install the packages twice
+### Option 1: Install the packages twice
 
 - Install pip in the blender distribution of `python`: `PATH/TO/BLENDER/$BLENDER_VERSION/python/python${PYTHON_VERSION}m -m ensurepip`
 - Install the requirements in the blender distribution of `python`: ``PATH/TO/BLENDER/$BLENDER_VERSION/python/python${PYTHON_VERSION}m/pip3 install -r PATH/TO/3DB/requirements.txt`
 
-### Make blender use your existing version of python
+### Option 2: Make blender use your existing version of python
 
 This is the solution used by the automated install script.
 
