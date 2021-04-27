@@ -38,9 +38,11 @@ rm -rf /tmp/3db
 git clone https://github.com/3db/3db.git /tmp/3db
 cd /tmp/3db
 conda run -n $env_name pip install -r ./requirements.txt
-mv /tmp/3db/threedb $CONDA_PREFIX/lib/python3.7/site-packages
+cp -r /tmp/3db/threedb $CONDA_PREFIX/lib/python3.7/site-packages
+mv /tmp/3db/threedb_* $CONDA_PREFIX/bin/
 
 cd $CONDA_PREFIX
+rm -rf /tmp/3db
 rm $CONDA_PREFIX/bin/blender /tmp/blender.tar.xz blender-2.92.0-linux64/ 2> /dev/null
 curl "https://mirror.clarkson.edu/blender/release/Blender2.92/blender-2.92.0-linux64.tar.xz" --output /tmp/blender.tar.xz
 tar -xf /tmp/blender.tar.xz -C ./
