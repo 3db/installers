@@ -26,7 +26,7 @@ If the scripts don't work for you or if you have an unsupported operating system
 - Make sure the requirements (`requirements.txt`) in that repo are installed: `pip install -r ./requirements.txt`
 - Make sure the 3db folder is part of your `$PYTHON_PATH`.
 
-Blender uses its own `python` internally. It can problematic because when you installed the packages earlier in the set of instructions, these were for the regular version of python (wheter it's `conda`, your system python or a `virtualenv`). As a result when you run the workers they won't have the necessary packages. To solve that issue there are multiople alternatives. You should pick the one that suits you better:
+Blender uses its own `python` internally. It can problematic because when you installed the packages earlier in the set of instructions, these were for the regular version of python (whether it's `conda`, your system python or a `virtualenv`). As a result, when you run the workers they won't have the necessary packages. To solve that issue there are multiple alternatives. You should pick the one that suits you better:
 
 ### Option 1: Install the packages twice
 
