@@ -36,12 +36,13 @@ echo $CONDA_PREFIX
 git clone https://github.com/3db/3db.git /tmp/3db
 mv /tmp/3db/threedb $CONDA_PREFIX/lib/python3.7/site-packages
 
-curl "https://mirror.clarkson.edu/blender/release/Blender2.92/blender-2.92.0-linux64.tar.xz" --output /tmp/blender.tar.xz
 cd $CONDA_PREFIX
+rm $CONDA_PREFIX/bin/blender /tmp/blender.tar.xz blender-2.92.0-linux64/ 2> /dev/null
+curl "https://mirror.clarkson.edu/blender/release/Blender2.92/blender-2.92.0-linux64.tar.xz" --output /tmp/blender.tar.xz
 tar -xf /tmp/blender.tar.xz -C ./
 rm /tmp/blender.tar.xz
 mv blender-2.92.0-linux64/ blender
 rm -rf ./blender/2.92/python
 ln -s $CONDA_PREFIX ./blender/2.92/python
-rm $CONDA_PREFIX/bin/blender
+rm $CONDA_PREFIX/bin/blender 2> /dev/null
 ln -s $CONDA_PREFIX/blender/blender $CONDA_PREFIX/bin
