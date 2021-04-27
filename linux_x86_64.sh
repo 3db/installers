@@ -28,7 +28,7 @@ case $DISTRO in
         ;;
 esac
 
-conda create -n threedb python=3.7.7
+conda create -y -n threedb python=3.7.7
 source ~/.bashrc 
 conda activate threedb
 echo $CONDA_PREFIX
