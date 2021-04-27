@@ -36,6 +36,8 @@ echo $CONDA_PREFIX
 
 rm -rf /tmp/3db
 git clone https://github.com/3db/3db.git /tmp/3db
+cd /tmp/3db
+conda run -n $env_name pip install -r ./requirements.txt
 mv /tmp/3db/threedb $CONDA_PREFIX/lib/python3.7/site-packages
 
 cd $CONDA_PREFIX
