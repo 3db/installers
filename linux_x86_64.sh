@@ -2,8 +2,6 @@
 
 env_name=${1:-threedb}
 
-echo $env_name
-
 # Determine OS platform
 UNAME=$(uname | tr "[:upper:]" "[:lower:]")
 # If Linux, try to determine specific distribution
