@@ -29,15 +29,13 @@ case $DISTRO in
 esac
 
 conda create -y -n $env_name python=3.7.7
-# source $CONDA_PREFIX/etc/profile.d/conda.sh
-# source ~/anaconda3/etc/profile.d/conda.sh
 CONDA_PREFIX=$(conda run -n $env_name bash -c 'echo \$CONDA_PREFIX')
 echo $CONDA_PREFIX
 
 rm -rf /tmp/3db
 git clone https://github.com/3db/3db.git /tmp/3db
 cd /tmp/3db
-conda run -n $env_name pip install -r ./requirements.txt
+conda run -p $CONDA_PREFIX pip install .
 cp -r /tmp/3db/threedb $CONDA_PREFIX/lib/python3.7/site-packages
 mv /tmp/3db/threedb_* $CONDA_PREFIX/bin/
 
